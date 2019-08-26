@@ -6,7 +6,8 @@ Description: Easily obtain health data from São Paulo's Health Department publi
 Imports: 
         httr,
         stringi,
-        xml2
+        xml2,
+        rvest
 Depends: R (>= 3.4.4)
 License: GPL (>= 2)
 Encoding: UTF-8

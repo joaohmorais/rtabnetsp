@@ -1,4 +1,5 @@
 library(stringi)
+library(rvest)
 library(xml2)
 #' Indicators Matrix
 #'
