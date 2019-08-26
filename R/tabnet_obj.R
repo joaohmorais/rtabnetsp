@@ -34,7 +34,7 @@ getPostRequestBody <- function(lines, indicators, years) {
 #' @return A string representing the POST url of the indicator.
 #' @examples
 getPostURL <- function(indicator_url) {
-  return (gsub("deftohtm.exe?tabnet", "tabcgi.exe?tabnet", ind_url, fixed = TRUE))
+  return (gsub("deftohtm.exe?tabnet", "tabcgi.exe?tabnet", indicator_url, fixed = TRUE))
 }
 
 #' Create a TABNET Object
