@@ -1,5 +1,5 @@
 library(stringi)
-
+library(xml2)
 #' Indicators Matrix
 #'
 #' Retrieve a matrix from TABNET of available indicators and their web links.

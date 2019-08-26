@@ -1,4 +1,5 @@
 library(httr)
+library(xml2)
 
 #' Retrieve TABNET data in .csv format
 #'
