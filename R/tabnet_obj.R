@@ -1,4 +1,5 @@
 library(xml2)
+library(rvest)
 
 #' Get POST Request Body
 #'
