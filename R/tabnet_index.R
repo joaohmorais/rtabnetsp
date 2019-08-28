@@ -11,19 +11,20 @@ library(xml2)
 #' @examples
 
 tabnet_index <- function(url = "http://portal.saude.sp.gov.br/links/matriz") {
+  html_obj <- read_html(url)
   index <- html_obj %>% html_nodes(".publish") %>% html_children()
-  index <- as.character(filhos)
-  index_links <- stri_detect_fixed(filhos, "href")
+  index <- as.character(index)
+  index_links <- stri_detect_fixed(index, "href")
   
-  filhos <- filhos[index_links]
+  index <- index[index_links]
   
   #s and e: start and end indexes
   
-  s1 <- unlist(gregexpr("href=", filhos, fixed=TRUE))
-  e1 <- unlist(gregexpr(".def", filhos, fixed=TRUE))
-  links <- substr(filhos, s1 + 6, unlist(e1) + 3)
+  s1 <- unlist(gregexpr("href=", index, fixed=TRUE))
+  e1 <- unlist(gregexpr(".def", index, fixed=TRUE))
+  links <- substr(index, s1 + 6, unlist(e1) + 3)
   
-  nomes_raw <- substr(filhos, e1 + 6, nchar(filhos))
+  nomes_raw <- substr(index, e1 + 6, nchar(index))
   
   s2 <- unlist(gregexpr("<u>", nomes_raw))
   s2[s2 == -1] <- 0
