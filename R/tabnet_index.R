@@ -1,6 +1,7 @@
 library(stringi)
 library(rvest)
 library(xml2)
+library(httr)
 #' Indicators Matrix
 #'
 #' Retrieve a matrix from TABNET of available indicators and their web links.
