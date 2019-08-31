@@ -13,14 +13,33 @@ library(rvest)
 #' @examples
 getPostRequestBody <- function(lines, indicators, years) {
   
+  body_complement <- switch (lines,
+     "Município" = paste0("&pesqmes1=Digite+o+texto+e+ache+f%E1cil&",
+                          "SMunic%EDpio=TODAS_AS_CATEGORIAS__&pesqmes2=Digite+o+texto+e+ache+f%E1cil&",
+                          "SDRS_de_Resid=TODAS_AS_CATEGORIAS__&pesqmes3=Digite+o+texto+e+ache+f%E1cil&SRRAS-Resid.=",
+                          "TODAS_AS_CATEGORIAS__&pesqmes4=Digite+o+texto+e+ache+f%E1cil&SRegi%E3o_de_Sa%FAde=TODAS_AS_CATEGORIAS__&",
+                          "zeradas=exibirlz&formato=table&mostre=Mostra"),
+     "DRS" = paste0("&pesqmes1=Digite+o+texto+e+ache+f%E1cil&",
+                    "SMunic%EDpio=TODAS_AS_CATEGORIAS__&pesqmes2=Digite+o+texto+e+ache+f%E1cil&",
+                    "SDRS=TODAS_AS_CATEGORIAS__&pesqmes3=Digite+o+texto+e+ache+f%E1cil&SRRAS=",
+                    "TODAS_AS_CATEGORIAS__&pesqmes4=Digite+o+texto+e+ache+f%E1cil&SRegi%E3o_de_Sa%FAde=TODAS_AS_CATEGORIAS__&",
+                    "zeradas=exibirlz&formato=table&mostre=Mostra"),
+     "RRAS" = paste0("&pesqmes1=Digite+o+texto+e+ache+f%E1cil&",
+                     "SMunic%EDpio=TODAS_AS_CATEGORIAS__&pesqmes2=Digite+o+texto+e+ache+f%E1cil&",
+                     "SDRS=TODAS_AS_CATEGORIAS__&pesqmes3=Digite+o+texto+e+ache+f%E1cil&SRRAS=TODAS_AS_CATEGORIAS__&",
+                     "pesqmes4=Digite+o+texto+e+ache+f%E1cil&SRegi%E3o_de_Sa%FAde=TODAS_AS_CATEGORIAS__&",
+                     "zeradas=exibirlz&formato=table&mostre=Mostra"),
+     "Região_de_Saúde" = paste0("&pesqmes1=Digite+o+texto+e+ache+f%E1cil&",
+                                "SMunic%EDpio=TODAS_AS_CATEGORIAS__&pesqmes2=Digite+o+texto+e+ache+f%E1cil&",
+                                "SDRS=TODAS_AS_CATEGORIAS__&pesqmes3=Digite+o+texto+e+ache+f%E1cil&SRRAS=",
+                                "TODAS_AS_CATEGORIAS__&pesqmes4=Digite+o+texto+e+ache+f%E1cil&SRegi%E3o_de_Sa%FAde=",
+                                "TODAS_AS_CATEGORIAS__&zeradas=exibirlz&formato=table&mostre=Mostra")
+  )
+  
   body <- paste0("Linha=", W1252.encode(lines), "&Coluna=Ano",
                  "&Incremento=", W1252.encode(indicators), 
                  tabnet_concatFormat(W1252.encode(years)), 
-                 "&pesqmes1=Digite+o+texto+e+ache+f%E1cil&",
-                 "SMunic%EDpio=TODAS_AS_CATEGORIAS__&pesqmes2=Digite+o+texto+e+ache+f%E1cil&",
-                 "SDRS_de_Resid=TODAS_AS_CATEGORIAS__&pesqmes3=Digite+o+texto+e+ache+f%E1cil&SRRAS-Resid.=",
-                 "TODAS_AS_CATEGORIAS__&pesqmes4=Digite+o+texto+e+ache+f%E1cil&SRegi%E3o_de_Sa%FAde=TODAS_AS_CATEGORIAS__&",
-                 "zeradas=exibirlz&formato=table&mostre=Mostra"
+                 body_complement
   )
   return(body)
 }

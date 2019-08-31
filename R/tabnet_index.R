@@ -38,6 +38,7 @@ tabnet_index <- function(url = "http://portal.saude.sp.gov.br/links/matriz") {
   
   matriz <- data.frame(nomes[validLinks], links[validLinks])
   colnames(matriz) <- c("Nomes", "Links")
+  matriz$Nomes <- as.character(matriz$Nomes)
   matriz$Links <- as.character(matriz$Links)
   return (matriz)
 }
