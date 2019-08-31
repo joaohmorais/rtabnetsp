@@ -5,6 +5,7 @@ Authors@R: person("João", "Morais", email = "joao.morais@unifesp.br", role = c(
 Description: Easily obtain health data from São Paulo's Health Department public interface TABNET.
 Depends: 
         httr,
+        tidyr,
         stringi,
         xml2,
         rvest,
