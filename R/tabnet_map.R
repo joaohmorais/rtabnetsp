@@ -21,10 +21,10 @@ tabnet_map <- function(indicator_index, region = "Município", subindicator = NU
                        label = FALSE, nBins = NULL, palette = "Purples", title = NULL) {
   
   #ShapeFiles
-  sp_cities <- readRDS("../shapefile/simpl_sp.rds")
-  sp_rras <- readRDS("../shapefile/simpl_rras.rds")
-  sp_drs <- readRDS("../shapefile/simpl_drs.rds")
-  sp_reg_saude <- readRDS("../shapefile/simpl_reg_saude.rds")
+  sp_cities <- readRDS(system.file("extdata", "/shapefile/simpl_sp.rds", package = "rtabnetsp"))
+  sp_rras <- readRDS(system.file("extdata", "/shapefile/simpl_rras.rds", package = "rtabnetsp"))
+  sp_drs <- readRDS(system.file("extdata", "/shapefile/simpl_drs.rds", package = "rtabnetsp"))
+  sp_reg_saude <- readRDS(system.file("extdata", "/shapefile/simpl_reg_saude.rds", package = "rtabnetsp"))
   
   
   data <- tabnet_df(indicator_index, region, subindicator, years, onlyMostRecent = TRUE)
