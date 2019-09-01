@@ -6,6 +6,8 @@ Description: Easily obtain health data from São Paulo's Health Department publi
 Depends: 
         httr,
         tidyr,
+        dplyr,
+        ggplot2,
         stringi,
         xml2,
         rvest,
