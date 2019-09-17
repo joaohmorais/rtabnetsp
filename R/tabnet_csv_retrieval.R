@@ -21,7 +21,11 @@ tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name =
   response <- NULL
   attempt <- 1
   while (is.null(response) && attempt <= 3) {
-    response <- POST(post_url,body = body, encode="raw", config = timeout(timeout))
+    response <- tryCatch(
+      POST(post_url,body = body, encode="raw", config = timeout(timeout)),
+      error = function(e) {
+        warning("Timed out... Trying again")
+      })
     attempt <- attempt + 1
   }
   if (!is.null(response)) {
