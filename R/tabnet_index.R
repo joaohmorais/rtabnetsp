@@ -12,7 +12,8 @@ library(httr)
 #' @examples
 
 tabnet_index <- function(url = "http://portal.saude.sp.gov.br/links/matriz") {
-  html_obj <- read_html(url)
+  download.file(url, "tabnet_index.html")
+  html_obj <- read_html("tabnet_index.html")
   index <- html_obj %>% html_nodes(".publish") %>% html_children()
   index <- as.character(index)
   index_links <- stri_detect_fixed(index, "href")

@@ -23,7 +23,11 @@ tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name =
   end <- regexpr("csv>", response_text)[1] + 2
   path <- substr(response_text, start, end)
   stopPoint <- min(which(grepl("Fonte", readLines(paste0(base_url, path), encoding = "latin1")) == TRUE))
-  data <- read.csv(paste0(base_url, path), skip = skip, sep=";", nrow = stopPoint - stopDelta, encoding = "latin1")
+  
+  
+  #data <- read.csv(paste0(base_url, path), skip = skip, sep=";", nrow = stopPoint - stopDelta, encoding = "latin1")
+  download.file(paste0(base_url, path), "indicator_data.csv")
+  data <- read.csv("indicator_data.csv", skip = skip, sep=";", nrow = stopPoint - stopDelta, encoding = "latin1")
   colnames(data) <- c(colnames(data)[1], gsub("X", "", colnames(data)[-1]))
   #formatting
   

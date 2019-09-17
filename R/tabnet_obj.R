@@ -66,7 +66,8 @@ getPostURL <- function(indicator_url) {
 #' @examples
 make_tabnet_obj <- function(indicator_url) {
   obj <- NULL
-  html_obj <- read_html(indicator_url)
+  download.file(indicator_url, "indicator_index.html")
+  html_obj <- read_html("indicator_index.html")
   if (!is.null(html_obj)) {
     obj$url <- indicator_url
     obj$POST_url <- getPostURL(indicator_url) 
@@ -85,6 +86,8 @@ make_tabnet_obj <- function(indicator_url) {
                                     html_nodes("#L") %>%
                                     html_children()
     )
+    
+    obj$Info <- strsplit(html_obj %>% html_nodes(".rodape_htm") %>% html_text(), "\r\n ")[[1]]
     
     obj$NomesIndicadores <- strsplit(
       tabnet_breakline_fix(

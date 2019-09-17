@@ -18,7 +18,7 @@ tabnet_df <- function(indicator_index, region = "Município", subindicator = NUL
   data <- NULL
   if (indicator_index %in% c(1:length(matriz$Links))) {
     obj <- make_tabnet_obj(matriz$Links[indicator_index])
-    linha <- min(which(obj$NomesLinhas == region))
+    linha <- min(c(which(obj$NomesLinhas == region)))
     indicator <- ifelse(is.null(subindicator), length(obj$Indicadores), subindicator)
     anos <- obj$Arquivos
     if (!is.null(years)) {
@@ -36,8 +36,16 @@ tabnet_df <- function(indicator_index, region = "Município", subindicator = NUL
     } else {
       print(paste0("Returning indicator: '", obj$NomesIndicadores[indicator],
                    "'; To retrieve a different one, use 'subindicator' index."))
+      print(paste0("linha:", obj$Linhas[linha]))
+      print(obj$Indicadores[indicator])
+      print(anos)
+      
       body <- getPostRequestBody(obj$Linhas[linha], obj$Indicadores[indicator], anos)
+      print(body)
+      print(obj$POST_url)
+      print(region)
       data <- tabnet_csv_retrieval(obj$POST_url, body, region)
+      print(head(data))
     }
   } else {
     warning("indicator index not found among available indicators")
