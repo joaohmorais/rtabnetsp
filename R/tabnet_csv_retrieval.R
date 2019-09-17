@@ -15,13 +15,13 @@ library(tidyr)
 #' @export
 #' @return Data frame containing data from the indicator specified by the url.
 #' @examples
-tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name = "Valor", skip = 3, stopDelta = 6) {
+tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name = "Valor", skip = 3, stopDelta = 6, timeout = 1) {
   base_url <- "http://tabnet.saude.sp.gov.br"
   data <- NULL
   response <- NULL
   attempt <- 1
   while (is.null(response) && attempt <= 3) {
-    response <- POST(post_url,body = body, encode="raw", config = timeout(0.2))
+    response <- POST(post_url,body = body, encode="raw", config = timeout(timeout))
     attempt <- attempt + 1
   }
   if (!is.null(response)) {
