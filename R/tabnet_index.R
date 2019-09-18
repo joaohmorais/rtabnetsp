@@ -12,7 +12,6 @@ library(httr)
 #' @examples
 
 tabnet_index <- function(url = "http://portal.saude.sp.gov.br/links/matriz") {
-  print("show")
   html_obj <- read_html(url)
   index <- html_obj %>% html_nodes(".publish") %>% html_children()
   index <- as.character(index)

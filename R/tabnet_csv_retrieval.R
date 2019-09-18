@@ -2,6 +2,7 @@ library(httr)
 library(rvest)
 library(xml2)
 library(tidyr)
+library(purrr)
 
 #' Retrieve TABNET data in .csv format
 #'
@@ -20,16 +21,10 @@ tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name =
   data <- NULL
   response <- NULL
   attempt <- 1
-  while (is.null(response) && attempt <= 3) {
-    response <- tryCatch(
-      POST(post_url,body = body, encode="raw", config = timeout(timeout)),
-      error = function(e) {
-        warning("Timed out... Trying again")
-      })
-    attempt <- attempt + 1
-  }
-  if (!is.null(response)) {
-    response_text <- content(response, as="text", encoding = "latin1")
+  response <- safe_POST(post_url, body)
+  
+  if (!is.null(response$result) && is.null(response$error)) {
+    response_text <- content(response$result, as="text", encoding = "latin1")
     start <- regexpr("/csv", response_text)[1]
     end <- regexpr("csv>", response_text)[1] + 2
     path <- substr(response_text, start, end)
@@ -61,9 +56,8 @@ tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name =
     colnames(data)[colnames(data) == "Valor"] <- ind_name
     
     data$Ano <- as.factor(data$Ano)
-    
   } else {
-    warning("Could not connect to TabNet: Connection timed out several times.")
+    stop("Could not connect to TabNet: Connection timed out several times.")
   }
   return(data)
 }

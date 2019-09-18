@@ -5,7 +5,7 @@
 \title{Retrieve TABNET data in .csv format}
 \usage{
 tabnet_csv_retrieval(post_url, body, colname = "Região",
-  ind_name = "Valor", skip = 3, stopDelta = 6)
+  ind_name = "Valor", skip = 3, stopDelta = 6, timeout = 1)
 }
 \arguments{
 \item{post_url}{Indicator POST url.}

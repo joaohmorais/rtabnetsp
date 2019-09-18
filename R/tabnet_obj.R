@@ -66,9 +66,9 @@ getPostURL <- function(indicator_url) {
 #' @examples
 make_tabnet_obj <- function(indicator_url) {
   obj <- NULL
-  download.file(indicator_url, "indicator_index.html")
-  html_obj <- read_html("indicator_index.html")
-  if (!is.null(html_obj)) {
+  response <- safe_GET(indicator_url)
+  if(!is.null(response$result) && is.null(response$error)) {
+    html_obj <- read_html(content(response$result, as="text", encoding = "latin1"))
     obj$url <- indicator_url
     obj$POST_url <- getPostURL(indicator_url) 
     
@@ -83,8 +83,8 @@ make_tabnet_obj <- function(indicator_url) {
     )[[1]]
     
     obj$Linhas <- tabnet_indicator_catch(html_obj %>%
-                                    html_nodes("#L") %>%
-                                    html_children()
+                                           html_nodes("#L") %>%
+                                           html_children()
     )
     
     obj$Info <- strsplit(html_obj %>% html_nodes(".rodape_htm") %>% html_text(), "\r\n ")[[1]]
@@ -117,8 +117,9 @@ make_tabnet_obj <- function(indicator_url) {
         html_nodes("#A") %>%
         html_children()
     )
+  } else {
+    stop("Could not connect to TabNet: Connection timed out several times.")
   }
   
-  return (obj)
-  
+  return(obj)
 }
