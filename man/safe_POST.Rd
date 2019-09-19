@@ -4,7 +4,7 @@
 \alias{safe_POST}
 \title{Safe POST Operation}
 \usage{
-safe_POST(url, body, encode = "raw", timeout = 1, num_attempts = 5)
+safe_POST(url, body, encode = "raw", timeout = 4, num_attempts = 5)
 }
 \arguments{
 \item{url}{POST request url.}

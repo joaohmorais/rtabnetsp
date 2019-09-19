@@ -33,7 +33,7 @@ safe_GET <- function(url, timeout = 1, num_attempts = 5) {
 #' @param num_attempts Maximum number of attempts to be made.
 #' @keywords tabnet
 #' @return Response instance containing possible error message and the http response content.
-safe_POST <- function(url, body, encode="raw", timeout = 1, num_attempts = 5) {
+safe_POST <- function(url, body, encode="raw", timeout = 4, num_attempts = 5) {
   response <- NULL
   safely_post <- safely(httr::POST)
   

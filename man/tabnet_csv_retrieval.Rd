@@ -5,7 +5,7 @@
 \title{Retrieve TABNET data in .csv format}
 \usage{
 tabnet_csv_retrieval(post_url, body, colname = "Região",
-  ind_name = "Valor", skip = 3, stopDelta = 6, timeout = 1)
+  ind_name = "Valor", skip = 3, stopDelta = 6, timeout = 4)
 }
 \arguments{
 \item{post_url}{Indicator POST url.}
@@ -17,6 +17,8 @@ tabnet_csv_retrieval(post_url, body, colname = "Região",
 \item{skip}{Numeric interval from which the .csv will start to be read.}
 
 \item{stopDelta}{Numeric interval from which the .csv reading will stop.}
+
+\item{timeout}{Maximum time interval POST request should take.}
 }
 \value{
 Data frame containing data from the indicator specified by the url.

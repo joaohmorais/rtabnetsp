@@ -12,16 +12,17 @@ library(purrr)
 #' @param colname The specified region name, like city.
 #' @param skip Numeric interval from which the .csv will start to be read.
 #' @param stopDelta Numeric interval from which the .csv reading will stop. 
+#' @param timeout Maximum time interval POST request should take.
 #' @keywords tabnet
 #' @export
 #' @return Data frame containing data from the indicator specified by the url.
 #' @examples
-tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name = "Valor", skip = 3, stopDelta = 6, timeout = 1) {
+tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name = "Valor", skip = 3, stopDelta = 6, timeout = 4) {
   base_url <- "http://tabnet.saude.sp.gov.br"
   data <- NULL
   response <- NULL
   attempt <- 1
-  response <- safe_POST(post_url, body)
+  response <- safe_POST(post_url, body, timeout = timeout)
   
   if (!is.null(response$result) && is.null(response$error)) {
     response_text <- content(response$result, as="text", encoding = "latin1")

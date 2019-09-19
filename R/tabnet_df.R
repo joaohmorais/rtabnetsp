@@ -1,3 +1,65 @@
+#' TABNET Object Check
+#'
+#' Check if a certain object has the appropriate TABNET object parameters.
+#' @param obj Object to be checked
+#' @keywords tabnet
+#' @export
+#' @return Boolean, indicating whether object passed is a valid TABNET object
+#' @examples
+
+
+is.tabnet_obj <- function(obj) {
+  return (all(
+    c(
+      "url",
+      "POST_url",
+      "NomesLinhas",
+      "Linhas",
+      "Info",
+      "NomesIndicadores",
+      "Indicadores",
+      "Anos",
+      "Arquivos"
+    ) %in% attributes(obj)$names
+  ))
+}
+
+#' TABNET dataframe retrieval
+#'
+#' Given a TABNET Object and certain parameters, automatically retrieve corresponding data frame
+#' @param obj TABNET Object
+#' @param line_index Chosen line index, defaults to 2 (city)
+#' @param ind_index Chosen subindicator index, defaults to last one
+#' @param years_index Chosen year(s), defaults to most recent available
+#' @param onlyMostRecent Boolean. Should only data from most recent year informed be returned?
+#' @keywords tabnet
+#' @export
+#' @return Corresponding data frame
+#' @examples
+
+tabnet_df_retrieval <- function(obj, line_index = 2, ind_index = NULL, years_index = NULL, onlyMostRecent = FALSE, timeout = 4) {
+  if (is_tabnet_obj(obj)) {
+    subindicator <- ind_index
+    if (is.null(subindicator)) {
+      subindicator <- length(obj$Indicadores)
+    }
+    
+    years <- years_index
+    if (is.null(years)) {
+      years <- c(1:length(obj$Arquivos))
+    }
+    if (onlyMostRecent) {
+      years <- years[1]
+    }
+  }
+  body <- getPostRequestBody(obj$Linhas[line_index],
+                             obj$Indicadores[subindicator],
+                             obj$Arquivos[years]
+  )
+  
+  return (tabnet_csv_retrieval(obj$POST_url, body, obj$NomesLinhas[line_index], timeout = timeout))
+}
+
 #' Retrieve TABNET data in dataframe form
 #'
 #' Retrieve a dataframe with indicator data, per region, per year.

@@ -1,5 +1,6 @@
 library(xml2)
 library(rvest)
+library(stringi)
 
 #' Get POST Request Body
 #'
@@ -64,9 +65,9 @@ getPostURL <- function(indicator_url) {
 #' @export
 #' @return An object containing information about the indicator url, its parameters, available years and files. This object is used to perform requests for data.
 #' @examples
-make_tabnet_obj <- function(indicator_url) {
+make_tabnet_obj <- function(indicator_url, timeout = 1) {
   obj <- NULL
-  response <- safe_GET(indicator_url)
+  response <- safe_GET(indicator_url, timeout = timeout)
   if(!is.null(response$result) && is.null(response$error)) {
     html_obj <- read_html(content(response$result, as="text", encoding = "latin1"))
     obj$url <- indicator_url
@@ -87,7 +88,9 @@ make_tabnet_obj <- function(indicator_url) {
                                            html_children()
     )
     
-    obj$Info <- strsplit(html_obj %>% html_nodes(".rodape_htm") %>% html_text(), "\r\n ")[[1]]
+    obj$Info <- stri_remove_empty(
+      strsplit(html_obj %>% html_nodes(".rodape_htm") %>% html_text(), "\r\n ")[[1]]
+    )
     
     obj$NomesIndicadores <- strsplit(
       tabnet_breakline_fix(

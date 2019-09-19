@@ -4,7 +4,7 @@
 \alias{make_tabnet_obj}
 \title{Create a TABNET Object}
 \usage{
-make_tabnet_obj(indicator_url)
+make_tabnet_obj(indicator_url, timeout = 1)
 }
 \arguments{
 \item{indicator_url}{Base url of the TABNET indicator.}
