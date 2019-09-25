@@ -28,9 +28,9 @@ is.tabnet_obj <- function(obj) {
 #'
 #' Given a TABNET Object and certain parameters, automatically retrieve corresponding data frame
 #' @param obj TABNET Object
-#' @param line_index Chosen line index, defaults to 2 (city)
+#' @param line_index Chosen line index, defaults to 2 - city
 #' @param ind_index Chosen subindicator index, defaults to last one
-#' @param years_index Chosen year(s), defaults to most recent available
+#' @param years_index Chosen years/years, defaults to most recent available
 #' @param onlyMostRecent Boolean. Should only data from most recent year informed be returned?
 #' @keywords tabnet
 #' @export
@@ -63,7 +63,7 @@ tabnet_df_retrieval <- function(obj, line_index = 2, ind_index = NULL, years_ind
 #' Retrieve TABNET data in dataframe form
 #'
 #' Retrieve a dataframe with indicator data, per region, per year.
-#' @param indicator_index Indicator index number, @seealso [tabnet_index()].
+#' @param indicator_index Indicator index number, @seealso [tabnet_index].
 #' @param region String describing how should data be regionalized.
 #' @param subindicator Among the indicator, which subindicator should be used? Defaults to the last index.
 #' @param years Retrieve data from one or more specific years?
@@ -72,7 +72,7 @@ tabnet_df_retrieval <- function(obj, line_index = 2, ind_index = NULL, years_ind
 #' @export
 #' @return Regionalized data frame from selected indicator
 #' @examples
-#' @seealso [tabnet_csv_retrieval()]
+#' @seealso [tabnet_csv_retrieval]
 
 tabnet_df <- function(indicator_index, region = "Município", subindicator = NULL, years = NULL, 
                             onlyMostRecent = FALSE) {

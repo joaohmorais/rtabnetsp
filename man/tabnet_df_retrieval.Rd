@@ -10,11 +10,11 @@ tabnet_df_retrieval(obj, line_index = 2, ind_index = NULL,
 \arguments{
 \item{obj}{TABNET Object}
 
-\item{line_index}{Chosen line index, defaults to 2 (city)}
+\item{line_index}{Chosen line index, defaults to 2 - city}
 
 \item{ind_index}{Chosen subindicator index, defaults to last one}
 
-\item{years_index}{Chosen year(s), defaults to most recent available}
+\item{years_index}{Chosen years/years, defaults to most recent available}
 
 \item{onlyMostRecent}{Boolean. Should only data from most recent year informed be returned?}
 }

@@ -8,7 +8,7 @@ tabnet_df(indicator_index, region = "Município", subindicator = NULL,
   years = NULL, onlyMostRecent = FALSE)
 }
 \arguments{
-\item{indicator_index}{Indicator index number, @seealso [tabnet_index()].}
+\item{indicator_index}{Indicator index number, @seealso [tabnet_index].}
 
 \item{region}{String describing how should data be regionalized.}
 
@@ -25,6 +25,6 @@ Regionalized data frame from selected indicator
 Retrieve a dataframe with indicator data, per region, per year.
 }
 \seealso{
-[tabnet_csv_retrieval()]
+[tabnet_csv_retrieval]
 }
 \keyword{tabnet}
