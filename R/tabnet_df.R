@@ -38,7 +38,7 @@ is.tabnet_obj <- function(obj) {
 #' @examples
 
 tabnet_df_retrieval <- function(obj, line_index = 2, ind_index = NULL, years_index = NULL, onlyMostRecent = FALSE, timeout = 4) {
-  if (is_tabnet_obj(obj)) {
+  if (is.tabnet_obj(obj)) {
     subindicator <- ind_index
     if (is.null(subindicator)) {
       subindicator <- length(obj$Indicadores)

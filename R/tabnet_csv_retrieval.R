@@ -17,7 +17,7 @@ library(purrr)
 #' @export
 #' @return Data frame containing data from the indicator specified by the url.
 #' @examples
-tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name = "Valor", skip = 3, stopDelta = 6, timeout = 4) {
+tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name = "Valor", skip = 3, stopDelta = 7, timeout = 4) {
   base_url <- "http://tabnet.saude.sp.gov.br"
   data <- NULL
   response <- NULL
@@ -57,6 +57,7 @@ tabnet_csv_retrieval <- function(post_url, body, colname = "Região", ind_name =
     colnames(data)[colnames(data) == "Valor"] <- ind_name
     
     data$Ano <- as.factor(data$Ano)
+  
   } else {
     stop("Could not connect to TabNet: Connection timed out several times.")
   }
