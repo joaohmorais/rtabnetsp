@@ -56,6 +56,7 @@ tabnet_df_retrieval <- function(obj, line_index = 2, ind_index = NULL, years_ind
                              obj$Indicadores[subindicator],
                              obj$Arquivos[years]
   )
+  print(body)
   
   return (tabnet_csv_retrieval(obj$POST_url, body, obj$NomesLinhas[line_index], timeout = timeout))
 }
