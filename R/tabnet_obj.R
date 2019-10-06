@@ -73,6 +73,9 @@ make_tabnet_obj <- function(indicator_url, timeout = 1) {
     obj$url <- indicator_url
     obj$POST_url <- getPostURL(indicator_url) 
     
+    obj$Nome <- (html_obj %>%
+      html_nodes("Nivel0") %>%
+      html_text())[1]
     
     obj$NomesLinhas <- strsplit(
       tabnet_breakline_fix(
@@ -107,13 +110,14 @@ make_tabnet_obj <- function(indicator_url, timeout = 1) {
         html_children()
     )
     
-    obj$Anos <- strsplit(
-      tabnet_breakline_fix(
-        html_obj %>%
-          html_nodes("#A") %>%
-          html_text()
-      ), "    "
-    )[[1]]
+    obj$Anos <- stri_trim(
+      strsplit(
+        tabnet_breakline_fix(
+          html_obj %>%
+            html_nodes("#A") %>%
+            html_text()
+        ), "    "
+      )[[1]])
     
     obj$Arquivos <- tabnet_indicator_catch(
       html_obj %>%
