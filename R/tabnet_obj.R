@@ -74,7 +74,7 @@ make_tabnet_obj <- function(indicator_url, timeout = 1) {
     obj$POST_url <- getPostURL(indicator_url) 
     
     obj$Nome <- (html_obj %>%
-      html_nodes("Nivel0") %>%
+      html_nodes(".Nivel0") %>%
       html_text())[1]
     
     obj$NomesLinhas <- strsplit(
