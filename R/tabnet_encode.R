@@ -73,7 +73,7 @@ tabnet_special_character_check <- function(escaped_string) {
 #' @keywords tabnet
 #' @export
 #' @return An encoded string according to TABNET's W1252 pattern.
-#' @examples
+#' @examplesta
 W1252.encode <- function(decoded) {
   encoded <- decoded
   encoded <- stri_escape_unicode(encoded)

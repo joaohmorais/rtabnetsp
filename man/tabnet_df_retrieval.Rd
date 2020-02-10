@@ -2,7 +2,7 @@
 % Please edit documentation in R/tabnet_df.R
 \name{tabnet_df_retrieval}
 \alias{tabnet_df_retrieval}
-\title{TABNET dataframe retrieval}
+\title{TABNET dataframe retrieval from TABNET object}
 \usage{
 tabnet_df_retrieval(obj, line_index = 2, ind_index = NULL,
   years_index = NULL, onlyMostRecent = FALSE, timeout = 4)
@@ -23,5 +23,14 @@ Corresponding data frame
 }
 \description{
 Given a TABNET Object and certain parameters, automatically retrieve corresponding data frame
+}
+\examples{
+\dontrun {tabnet_df_retrieval(obj, line_index = 3, ind_index = 1, years_index = c(2:4))}
+\dontrun {tabnet_df_retrieval(obj, onlyMostRecent = TRUE)}
+}
+\seealso{
+[tabnet_csv_retrieval()]
+
+[indicator_df()]
 }
 \keyword{tabnet}

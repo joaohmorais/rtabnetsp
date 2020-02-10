@@ -2,7 +2,7 @@
 % Please edit documentation in R/tabnet_index.R
 \name{tabnet_index}
 \alias{tabnet_index}
-\title{Indicators Matrix}
+\title{Indicators Names and URLs Matrix}
 \usage{
 tabnet_index(url = "http://portal.saude.sp.gov.br/links/matriz")
 }

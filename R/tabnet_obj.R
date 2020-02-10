@@ -130,3 +130,32 @@ make_tabnet_obj <- function(indicator_url, timeout = 1) {
   
   return(obj)
 }
+
+#' View Indicator Information
+#'
+#' View available indicator regions, years and subindicators.
+#' @param indicator_index Index of desired indicator, according to Indicator List.
+#' @param url URL for indicator retrieval, defaults to SP TABNET.
+#' @param timeout Timeout period, in seconds.
+#' @keywords tabnet
+#' @export
+#' @return An object containing information about the indicator, its parameters, available years, regions and subindicators.
+#' @examples
+#' \dontrun{view_indicator(21)}
+view_indicator <- function(indicator_index, url = "http://portal.saude.sp.gov.br/links/matriz", timeout = 1) {
+  links <- tabnet_index(url = url)$Links
+  indicator_info <- NULL
+  if (length(links) >= indicator_index) {
+    obj <- make_tabnet_obj(links[indicator_index])
+    name <- obj$Nome
+    name_start_index <- unlist(gregexpr("-", name))
+    name <- substr(name, name_start_index + 2, nchar(name))
+    indicator_info$Indicator.Name <- paste0(indicator_index, " - ", name)
+    indicator_info$Indicator.URL <- obj$url
+    indicator_info$Available.Regions <- obj$NomesLinhas[obj$NomesLinhas != "Ano"]
+    indicator_info$Available.Years <- obj$Anos
+    indicator_info$Available.Subindicators <- obj$NomesIndicadores
+  }
+  
+  return(indicator_info)
+}

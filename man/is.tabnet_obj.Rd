@@ -15,4 +15,10 @@ Boolean, indicating whether object passed is a valid TABNET object
 \description{
 Check if a certain object has the appropriate TABNET object parameters.
 }
+\examples{
+\dontrun {is.tabnet_obj(make_tabnet_obj(tabnet_index()$Links[1]))}
+}
+\seealso{
+[make_tabnet_obj()]
+}
 \keyword{tabnet}

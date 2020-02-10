@@ -2,13 +2,13 @@
 % Please edit documentation in R/tabnet_df.R
 \name{tabnet_df}
 \alias{tabnet_df}
-\title{Retrieve TABNET data in dataframe form}
+\title{Retrieve TABNET data from Indicator Index (deprecated)}
 \usage{
 tabnet_df(indicator_index, region = "Município", subindicator = NULL,
   years = NULL, onlyMostRecent = FALSE)
 }
 \arguments{
-\item{indicator_index}{Indicator index number, @seealso [tabnet_index].}
+\item{indicator_index}{Indicator index number, @seealso [tabnet_index()].}
 
 \item{region}{String describing how should data be regionalized.}
 
@@ -22,9 +22,11 @@ tabnet_df(indicator_index, region = "Município", subindicator = NULL,
 Regionalized data frame from selected indicator
 }
 \description{
-Retrieve a dataframe with indicator data, per region, per year.
+Retrieve a dataframe with indicator data, per region, per year. Deprecated, @seealso [indicator_df()]
 }
 \seealso{
-[tabnet_csv_retrieval]
+[indicator_df()]
+
+[tabnet_csv_retrieval()]
 }
 \keyword{tabnet}
