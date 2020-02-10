@@ -25,8 +25,8 @@ Corresponding data frame
 Given a TABNET Object and certain parameters, automatically retrieve corresponding data frame
 }
 \examples{
-\dontrun {tabnet_df_retrieval(obj, line_index = 3, ind_index = 1, years_index = c(2:4))}
-\dontrun {tabnet_df_retrieval(obj, onlyMostRecent = TRUE)}
+\dontrun{tabnet_df_retrieval(obj, line_index = 3, ind_index = 1, years_index = c(2:4))}
+\dontrun{tabnet_df_retrieval(obj, onlyMostRecent = TRUE)}
 }
 \seealso{
 [tabnet_csv_retrieval()]
