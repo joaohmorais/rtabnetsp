@@ -15,7 +15,7 @@ fetch_all(region = "Município",
 \item{timeout}{Time for connection to expire, in seconds.}
 }
 \value{
-Regionalized data frame from selected indicator
+Data frame with values from all indicators, from all available periods, regionalized.
 }
 \description{
 Retrieve a gathered data frame with ll indicators from a TABNET link, given a regionalization.

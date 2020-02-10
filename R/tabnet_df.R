@@ -8,7 +8,6 @@ library(purrr)
 #' @export
 #' @return Boolean, indicating whether object passed is a valid TABNET object
 #' @examples
-#' \dontrun {is.tabnet_obj(make_tabnet_obj(tabnet_index()$Links[1]))}
 #' @seealso [make_tabnet_obj()]
 
 
@@ -190,7 +189,7 @@ isRegionAvailable <- function(obj, region = "Município") {
 #' @param timeout Time for connection to expire, in seconds.
 #' @keywords tabnet
 #' @export
-#' @return Regionalized data frame from selected indicator
+#' @return Data frame with values from all indicators, from all available periods, regionalized.
 #' @examples
 #' \dontrun{df <- fetch_all(region = "Região de Saúde")}
 fetch_all <- function(region = "Município", url = "http://portal.saude.sp.gov.br/links/matriz", timeout = 1) {
