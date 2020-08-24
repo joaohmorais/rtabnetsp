@@ -63,7 +63,7 @@ tabnet_map <- function(indicator_index, region = "Município", subindicator = NU
     ggtitle(ifelse(is.null(title), paste0(obj$NomesIndicadores[indicator], ", por ", 
                                           region, ", em ", levels(plotData$Ano)), 
                    title)) +
-    theme(panel.grid.major = element_blank(), panel.background = element_rect(fill = "aliceblue"), 
+    theme(panel.grid.major = element_blank(), panel.background = element_rect(fill = "#F5F5F5"), 
           title = element_text(hjust = 0.5, size = 12), axis.title.x = element_text(size = 8), 
           axis.title.y = element_text(size = 8)) 
   
