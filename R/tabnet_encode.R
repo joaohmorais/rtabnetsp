@@ -3,7 +3,7 @@ library(stringi)
 #' Indicator Check
 #'
 #' Clean an indicator string.
-#' @param indicators Indicator strings. 
+#' @param indicators Indicator strings.
 #' @keywords tabnet
 #' @return Return clean indicator strings.
 #' @examples
@@ -19,7 +19,7 @@ tabnet_indicator_catch <- function(indicators) {
 #' Tabnet Hexadecimal Escape Function
 #'
 #' Adapt parts of the escaped string so it is uploadable to TABNET.
-#' @param indicators Indicator strings. 
+#' @param indicators Indicator strings.
 #' @keywords tabnet
 #' @return String with adapted escaped characters.
 #' @examples
@@ -31,12 +31,12 @@ tabnet_hex_escape <- function(indicators) {
     indexes <- unlist(gregexpr("\\u00", linha))
     if (indexes[1] != -1) {
       for (j in c(1:length(indexes))) {
-        linha <- paste0(substr(linha, 1, indexes[j] + 2), 
+        linha <- paste0(substr(linha, 1, indexes[j] + 2),
                         toupper(substr(linha, indexes[j] + 3, indexes[j] + 4)),
                         substr(linha, indexes[j] + 5, nchar(linha)))
       }
     }
-    
+
     clean_indicators <- c(clean_indicators, linha)
   }
   return (clean_indicators)
@@ -51,29 +51,29 @@ tabnet_hex_escape <- function(indicators) {
 #' @examples
 tabnet_special_character_check <- function(escaped_string) {
   fixed_string <- escaped_string
-  
+
   #percentage check
   fixed_string <- gsub("%", "%25", fixed_string)
-  
+
   #parenthesis check
   fixed_string <- gsub("(", "%28", fixed_string, fixed=TRUE)
   fixed_string <- gsub(")", "%29", fixed_string, fixed=TRUE)
-  
+
   #greater and less than check
   fixed_string <- gsub("&lt;", "%3C", fixed_string)
   fixed_string <- gsub("&gt;", "%3E", fixed_string)
-  
+
   return(fixed_string)
 }
 
 #' W1252 Encode
 #'
 #' Process the string to the W1252 encoding, used by the TABNET System.
-#' @param decoded The regular string, before encoding. 
+#' @param decoded The regular string, before encoding.
 #' @keywords tabnet
 #' @export
 #' @return An encoded string according to TABNET's W1252 pattern.
-#' @examplesta
+#' @examples
 W1252.encode <- function(decoded) {
   encoded <- decoded
   encoded <- stri_escape_unicode(encoded)
@@ -86,7 +86,7 @@ W1252.encode <- function(decoded) {
 #' TABNET Breakline fix
 #'
 #' Fix the line breaks of indicators.
-#' @param lines Lines to be fixed. 
+#' @param lines Lines to be fixed.
 #' @keywords tabnet
 #' @return The same line, without break characters.
 #' @examples
@@ -99,7 +99,7 @@ tabnet_breakline_fix <- function(lines) {
 #' Concatenate TABNET Files
 #'
 #' When asking for more than one file, the names must be concatenated in a certain pattern.
-#' @param elements The files to be concatenated. 
+#' @param elements The files to be concatenated.
 #' @param sep The separator between the file names.
 #' @keywords tabnet
 #' @return A string concatenating all elements provided using the separator.

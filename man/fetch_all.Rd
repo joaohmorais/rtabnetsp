@@ -4,8 +4,11 @@
 \alias{fetch_all}
 \title{Retrieve All Indicators}
 \usage{
-fetch_all(region = "Município",
-  url = "http://portal.saude.sp.gov.br/links/matriz", timeout = 1)
+fetch_all(
+  region = "Município",
+  url = "http://portal.saude.sp.gov.br/links/matriz",
+  timeout = 1
+)
 }
 \arguments{
 \item{region}{String specifying desired regionalization. Defaults to "Município"}

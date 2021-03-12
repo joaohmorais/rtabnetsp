@@ -4,8 +4,11 @@
 \alias{view_indicator}
 \title{View Indicator Information}
 \usage{
-view_indicator(indicator_index,
-  url = "http://portal.saude.sp.gov.br/links/matriz", timeout = 1)
+view_indicator(
+  indicator_index,
+  url = "http://portal.saude.sp.gov.br/links/matriz",
+  timeout = 1
+)
 }
 \arguments{
 \item{indicator_index}{Index of desired indicator, according to Indicator List.}

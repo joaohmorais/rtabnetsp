@@ -4,9 +4,15 @@
 \alias{indicator_df}
 \title{Retrieve Indicator data from its Index}
 \usage{
-indicator_df(indicator_index, region = NULL, subindicator = NULL,
-  years = NULL, onlyMostRecent = FALSE,
-  url = "http://portal.saude.sp.gov.br/links/matriz", timeout = 1)
+indicator_df(
+  indicator_index,
+  region = NULL,
+  subindicator = NULL,
+  years = NULL,
+  onlyMostRecent = FALSE,
+  url = "http://portal.saude.sp.gov.br/links/matriz",
+  timeout = 1
+)
 }
 \arguments{
 \item{indicator_index}{Indicator index number, @seealso [tabnet_index()].}

@@ -4,8 +4,7 @@
 \alias{indicator_search}
 \title{Search Indicators' Names from a Keyword}
 \usage{
-indicator_search(keywords,
-  url = "http://portal.saude.sp.gov.br/links/matriz")
+indicator_search(keywords, url = "http://portal.saude.sp.gov.br/links/matriz")
 }
 \arguments{
 \item{url}{TABNET Url.}

@@ -4,8 +4,14 @@
 \alias{tabnet_df_retrieval}
 \title{TABNET dataframe retrieval from TABNET object}
 \usage{
-tabnet_df_retrieval(obj, line_index = 2, ind_index = NULL,
-  years_index = NULL, onlyMostRecent = FALSE, timeout = 4)
+tabnet_df_retrieval(
+  obj,
+  line_index = 2,
+  ind_index = NULL,
+  years_index = NULL,
+  onlyMostRecent = FALSE,
+  timeout = 4
+)
 }
 \arguments{
 \item{obj}{TABNET Object}

@@ -4,8 +4,13 @@
 \alias{tabnet_df}
 \title{Retrieve TABNET data from Indicator Index (deprecated)}
 \usage{
-tabnet_df(indicator_index, region = "Município", subindicator = NULL,
-  years = NULL, onlyMostRecent = FALSE)
+tabnet_df(
+  indicator_index,
+  region = "Município",
+  subindicator = NULL,
+  years = NULL,
+  onlyMostRecent = FALSE
+)
 }
 \arguments{
 \item{indicator_index}{Indicator index number, @seealso [tabnet_index()].}
