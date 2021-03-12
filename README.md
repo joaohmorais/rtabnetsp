@@ -4,8 +4,7 @@ The **rtabnetsp** package enables retrieval of health indicators data from São 
 
 ## Dependencies
 
-Currently, the package has a few dependencies: **httr** (https://cran.r-project.org/web/packages/httr/httr.pdf) for HTTP requests, **xml2** (https://cran.r-project.org/web/packages/xml2/xml2.pdf) and **rvest** (https://cran.r-project.org/web/packages/rvest/rvest.pdf) for web scraping, **stringi** (https://cran.r-project.org/web/packages/stringi/stringi.pdf) for text manipulation, **purrr** (https://cran.r-project.org/web/packages/purrr/purrr.pdf) for treatment of exceptions, **tidyr** (https://cran.r-project.org/web/packages/tidyr/tidyr.pdf) and **dplyr** (https://cran.r-project.org/web/packages/dplyr/dplyr.pdf) for data manipulation, and **ggplot2** (https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf), **sf** (https://cran.r-project.org/web/packages/sf/sf.pdf), and **RColorBrewer** (https://cran.r-project.org/web/packages/RColorBrewer/
-RColorBrewer.pdf) for graphics and mapping. 
+Currently, the package has a few dependencies: **httr** (https://cran.r-project.org/web/packages/httr/httr.pdf) for HTTP requests, **xml2** (https://cran.r-project.org/web/packages/xml2/xml2.pdf) and **rvest** (https://cran.r-project.org/web/packages/rvest/rvest.pdf) for web scraping, **stringi** (https://cran.r-project.org/web/packages/stringi/stringi.pdf) for text manipulation, **purrr** (https://cran.r-project.org/web/packages/purrr/purrr.pdf) for treatment of exceptions, **tidyr** (https://cran.r-project.org/web/packages/tidyr/tidyr.pdf) and **dplyr** (https://cran.r-project.org/web/packages/dplyr/dplyr.pdf) for data manipulation, and **ggplot2** (https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf), **sf** (https://cran.r-project.org/web/packages/sf/sf.pdf), and **RColorBrewer** (https://cran.r-project.org/web/packages/RColorBrewer/RColorBrewer.pdf) for graphics and mapping. 
 
 ## Installation
 
